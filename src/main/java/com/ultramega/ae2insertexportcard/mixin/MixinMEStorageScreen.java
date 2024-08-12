@@ -37,20 +37,20 @@ public abstract class MixinMEStorageScreen extends AEBaseScreen {
             ae2insertExportCard$upgradeCardButton[0] = new UpgradeItemButton(btn -> ((UpgradeInterface) ((MEStorageScreen<?>) (Object) this).getMenu()).ae2InsertExportCard$openMenu(UpgradeType.INSERT),
                     new ResourceLocation(AE2InsertExportCard.MOD_ID, "textures/item/insert_card.png"));
             addToLeftToolbar(ae2insertExportCard$upgradeCardButton[0]);
-            ae2insertExportCard$upgradeCardButton[0].setMessage(Component.translatable(ModItems.INSERT_CARD.get().getDescriptionId()));
+            ae2insertExportCard$upgradeCardButton[0].setMessage(Component.translatable(ModItems.INSERT_CARD.getDescriptionId()));
 
             ae2insertExportCard$upgradeCardButton[1] = new UpgradeItemButton(btn -> ((UpgradeInterface) ((MEStorageScreen<?>) (Object) this).getMenu()).ae2InsertExportCard$openMenu(UpgradeType.EXPORT),
                     new ResourceLocation(AE2InsertExportCard.MOD_ID, "textures/item/export_card.png"));
             addToLeftToolbar(ae2insertExportCard$upgradeCardButton[1]);
-            ae2insertExportCard$upgradeCardButton[1].setMessage(Component.translatable(ModItems.EXPORT_CARD.get().getDescriptionId()));
+            ae2insertExportCard$upgradeCardButton[1].setMessage(Component.translatable(ModItems.EXPORT_CARD.getDescriptionId()));
         }
     }
 
     @Inject(at = @At("TAIL"), method = "updateBeforeRender")
     protected void updateBeforeRender(CallbackInfo ci) {
         if(ae2insertExportCard$upgradeCardButton[0] != null) {
-            ae2insertExportCard$upgradeCardButton[0].setVisibility(((MEStorageScreen<?>) (Object) this).getMenu().getHost().getInstalledUpgrades(ModItems.INSERT_CARD.get()) > 0);
-            ae2insertExportCard$upgradeCardButton[1].setVisibility(((MEStorageScreen<?>) (Object) this).getMenu().getHost().getInstalledUpgrades(ModItems.EXPORT_CARD.get()) > 0);
+            ae2insertExportCard$upgradeCardButton[0].setVisibility(((MEStorageScreen<?>) (Object) this).getMenu().getHost().getInstalledUpgrades(ModItems.INSERT_CARD) > 0);
+            ae2insertExportCard$upgradeCardButton[1].setVisibility(((MEStorageScreen<?>) (Object) this).getMenu().getHost().getInstalledUpgrades(ModItems.EXPORT_CARD) > 0);
         }
     }
 }

@@ -36,7 +36,7 @@ public class UpgradeHost implements IConfigurableObject {
         this.host = host;
         for(int i = 0; i < host.getUpgrades().size(); i++) {
             ItemStack upgrade = host.getUpgrades().getStackInSlot(i);
-            if(upgrade.getItem() == (type == UpgradeType.INSERT ? ModItems.INSERT_CARD.get() : ModItems.EXPORT_CARD.get())) {
+            if(upgrade.getItem() == (type == UpgradeType.INSERT ? ModItems.INSERT_CARD : ModItems.EXPORT_CARD)) {
                 this.configManager = new ConfigManager((manager, settingName) -> manager.writeToNBT(upgrade.getOrCreateTag()));
                 this.upgrades = UpgradeInventories.forItem(upgrade, type == UpgradeType.EXPORT ? 3 : 2, null);
 

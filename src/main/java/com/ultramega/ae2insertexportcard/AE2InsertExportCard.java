@@ -29,20 +29,20 @@ public class AE2InsertExportCard {
     }
 
     private void setup(FMLCommonSetupEvent event) {
-        Upgrades.add(ModItems.INSERT_CARD.get(), AEItems.WIRELESS_TERMINAL, 1);
-        Upgrades.add(ModItems.EXPORT_CARD.get(), AEItems.WIRELESS_TERMINAL, 1);
-        Upgrades.add(ModItems.INSERT_CARD.get(), AEItems.WIRELESS_CRAFTING_TERMINAL, 1);
-        Upgrades.add(ModItems.EXPORT_CARD.get(), AEItems.WIRELESS_CRAFTING_TERMINAL, 1);
+        Upgrades.add(ModItems.INSERT_CARD, AEItems.WIRELESS_TERMINAL, 1);
+        Upgrades.add(ModItems.EXPORT_CARD, AEItems.WIRELESS_TERMINAL, 1);
+        Upgrades.add(ModItems.INSERT_CARD, AEItems.WIRELESS_CRAFTING_TERMINAL, 1);
+        Upgrades.add(ModItems.EXPORT_CARD, AEItems.WIRELESS_CRAFTING_TERMINAL, 1);
         if(ModList.get().isLoaded("ae2wtlib")) {
-            Upgrades.add(ModItems.INSERT_CARD.get(), AE2wtlib.UNIVERSAL_TERMINAL, 1);
-            Upgrades.add(ModItems.EXPORT_CARD.get(), AE2wtlib.UNIVERSAL_TERMINAL, 1);
+            Upgrades.add(ModItems.INSERT_CARD, AE2wtlib.UNIVERSAL_TERMINAL, 1);
+            Upgrades.add(ModItems.EXPORT_CARD, AE2wtlib.UNIVERSAL_TERMINAL, 1);
         }
 
-        Upgrades.add(AEItems.FUZZY_CARD, ModItems.INSERT_CARD.get(), 1);
-        Upgrades.add(AEItems.FUZZY_CARD, ModItems.EXPORT_CARD.get(), 1);
-        Upgrades.add(AEItems.INVERTER_CARD, ModItems.INSERT_CARD.get(), 1);
-        Upgrades.add(AEItems.CRAFTING_CARD, ModItems.EXPORT_CARD.get(), 1);
-        Upgrades.add(AEItems.SPEED_CARD, ModItems.EXPORT_CARD.get(), 1);
+        Upgrades.add(AEItems.FUZZY_CARD, ModItems.INSERT_CARD, 1);
+        Upgrades.add(AEItems.FUZZY_CARD, ModItems.EXPORT_CARD, 1);
+        Upgrades.add(AEItems.INVERTER_CARD, ModItems.INSERT_CARD, 1);
+        Upgrades.add(AEItems.CRAFTING_CARD, ModItems.EXPORT_CARD, 1);
+        Upgrades.add(AEItems.SPEED_CARD, ModItems.EXPORT_CARD, 1);
 
         AE2InsertExportCard.NETWORK_HANDLER.register();
     }

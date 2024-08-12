@@ -11,8 +11,8 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AE2InsertExportCard.MOD_ID);
 
-    public static final RegistryObject<CreativeModeTab> TAB_AE2INSERTEXPORTCARD = TABS.register(AE2InsertExportCard.MOD_ID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + AE2InsertExportCard.MOD_ID)).icon(() -> new ItemStack(ModItems.INSERT_CARD.get())).displayItems((featureFlags, output) -> {
-        output.accept(new ItemStack(ModItems.INSERT_CARD.get()));
-        output.accept(new ItemStack(ModItems.EXPORT_CARD.get()));
+    public static final RegistryObject<CreativeModeTab> TAB_AE2INSERTEXPORTCARD = TABS.register(AE2InsertExportCard.MOD_ID, () -> CreativeModeTab.builder().title(Component.translatable("itemGroup." + AE2InsertExportCard.MOD_ID)).icon(() -> new ItemStack(ModItems.INSERT_CARD)).displayItems((featureFlags, output) -> {
+        output.accept(new ItemStack(ModItems.INSERT_CARD));
+        output.accept(new ItemStack(ModItems.EXPORT_CARD));
     }).build());
 }

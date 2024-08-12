@@ -22,7 +22,13 @@ import appeng.me.helpers.PlayerSource;
 import appeng.util.ConfigInventory;
 import com.ultramega.ae2insertexportcard.AE2InsertExportCard;
 import com.ultramega.ae2insertexportcard.item.UpgradeHost;
+import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.item.PlayerInventoryStorage;
+import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -132,7 +138,9 @@ public class MixinWirelessTerminalItem extends Item {
                                         for(int index = 0; index < filterConfig.size(); index++) {
                                             GenericStack filter = filterConfig.getStack(index);
                                             if(filter != null && filter.what() instanceof AEFluidKey) {
-                                                itemInInventory.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent((fluidItem -> {
+                                                //itemInInventory.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent((fluidItem -> {
+                                                Storage<FluidVariant> fluidStorage = ContainerItemContext.ofPlayerSlot(player, PlayerInventoryStorage.of(player.getInventory()).getSlots().get(slot)).find(FluidStorage.ITEM);
+                                                if(fluidStorage != null){
                                                     FluidStack fluidStack = fluidItem.drain(Integer.MAX_VALUE, IFluidHandler.FluidAction.SIMULATE);
                                                     if(fluidStack.isEmpty()) return;
 
@@ -145,7 +153,7 @@ public class MixinWirelessTerminalItem extends Item {
                                                     fluidItem.drain((int)amount, IFluidHandler.FluidAction.EXECUTE);
                                                     StorageHelper.poweredInsert(new ChannelPowerSrc(node, grid.getEnergyService()), grid.getStorageService().getInventory(), aeFluidKey, amount, source, Actionable.MODULATE);
                                                     player.containerMenu.broadcastChanges();
-                                                }));
+                                                }
                                             }
                                         }
 
